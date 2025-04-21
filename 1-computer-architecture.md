@@ -1,9 +1,5 @@
 # Computer Architecture
 
-## Overview
-
-This lesson introduces the foundational components of computer architecture that underpin modern system design. Understanding these components is crucial for building scalable, efficient, and reliable systems.
-
 ## Key Concepts
 
 ### 1. CPU (Central Processing Unit)
@@ -14,16 +10,31 @@ This lesson introduces the foundational components of computer architecture that
 
 ### 2. Memory Hierarchy
 
-- **Registers**: Fastest, located inside the CPU.
-- **Cache** (L1, L2, L3): Fast access, stores frequently used data.
-- **RAM (Random Access Memory)**: Volatile memory for active processes.
-- **Disk Storage**: SSDs or HDDs for persistent storage.
+#### a. Registers
 
-### 3. Disk and Storage
+- Fastest memory, inside the CPU.
+- Very limited in size, used for immediate instruction execution.
 
-- **HDDs**: Slower, mechanical parts.
-- **SSDs**: Faster, solid-state.
+#### b. CPU Cache
+
+- **L1, L2, and L3 caches**: Small, fast memory located close to or inside the CPU.
+- Stores frequently accessed data to reduce the need to access slower RAM.
+- L1 is fastest but smallest; L3 is slower but larger.
+
+#### c. RAM (Random Access Memory)
+
+- Main memory used to store active processes and data.
+- Volatile memory — data is lost when power is off.
+- Slower than CPU cache but much larger.
+
+#### d. Storage (Disk)
+
+- Persistent memory (HDD or SSD).
+- Used to store applications, files, and data long-term.
+- SSDs are much faster than HDDs but slower than RAM.
 - Storage affects I/O performance, latency, and throughput.
+
+---
 
 ### 4. Network Interface
 
@@ -50,12 +61,28 @@ This lesson introduces the foundational components of computer architecture that
 - Disk I/O constraints in data-intensive applications.
 - Network delays impacting distributed systems.
 
-## Summary
+## Caching: The Data Journey from Storage to CPU
 
-A solid understanding of computer architecture helps engineers:
+### Process Flow:
 
-- Optimize systems.
-- Choose the right hardware for the workload.
-- Understand trade-offs between speed, cost, and scalability.
+### Explanation:
+
+1. **Storage → RAM**:
+
+   - When a program or data is needed, it is loaded from the disk into RAM.
+   - This is relatively slow (milliseconds), especially from HDDs.
+
+2. **RAM → CPU Cache**:
+
+   - The CPU requests specific data. If it's not in the cache (a cache miss), it fetches it from RAM.
+   - Caches use algorithms (like LRU - Least Recently Used) to decide which data to keep.
+
+3. **CPU Cache → CPU Registers**:
+   - The most frequently accessed values are moved to registers for immediate use by the CPU.
+
+### Cache Efficiency:
+
+- Caches drastically reduce the time it takes for the CPU to access memory.
+- A cache hit (data already in cache) is much faster than fetching from RAM or disk.
 
 ---

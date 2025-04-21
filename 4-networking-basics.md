@@ -1,59 +1,106 @@
-# Networking Basics
-
-## Overview
-
-Networking is at the core of any distributed system. This lesson introduces the fundamentals of computer networking, focusing on concepts essential for system design.
+# 04 - Networking Basics
 
 ## Key Concepts
 
 ### 1. IP Addressing
 
 - **IP Address**: Unique identifier for a device on a network (e.g., `192.168.1.1`).
-- **IPv4 vs IPv6**: IPv4 is 32-bit (limited addresses), IPv6 is 128-bit (virtually unlimited).
-- **Public vs Private IPs**: Public IPs are globally routable, private IPs are used in local networks.
+- Two major versions: IPv4 (32-bit) and IPv6 (128-bit).
 
-### 2. MAC Address
+### 2. Public vs Private IP
 
-- Physical address of a network interface card (NIC).
-- Used within local networks for communication between devices.
+- **Public IP**:
+  - Assigned by ISPs.
+  - Routable over the internet.
+  - Example: A server hosting a website typically has a public IP.
+- **Private IP**:
+  - Used within local networks (e.g., homes, offices).
+  - Not routable over the public internet.
+  - Common ranges: `192.168.x.x`, `10.x.x.x`, `172.16.x.x - 172.31.x.x`.
 
-### 3. Ports
+### 3. Static vs Dynamic IP
 
-- Represent different services on a machine (e.g., port 80 for HTTP, 443 for HTTPS).
-- Help distinguish between multiple services running on the same IP address.
+- **Static IP**:
+  - Manually assigned and remains constant.
+  - Useful for servers or devices that need consistent addressing.
+- **Dynamic IP**:
+  - Automatically assigned by DHCP (Dynamic Host Configuration Protocol).
+  - Changes over time or when the device reconnects.
 
-### 4. DNS (Domain Name System)
+---
 
-- Resolves human-readable domain names (e.g., `example.com`) into IP addresses.
-- Works in a hierarchical manner involving root, TLD, and authoritative servers.
+## 4. Ports
 
-### 5. NAT (Network Address Translation)
+- Represent different services on a machine.
+- Example: `80` for HTTP, `443` for HTTPS, `22` for SSH.
+- Enables multiple services to run on the same IP address.
 
-- Allows multiple devices in a local network to share a single public IP.
-- Common in home and office routers.
+### 5. DNS (Domain Name System)
 
-### 6. Firewalls
+- Translates domain names like `example.com` to IP addresses.
+- DNS Lookup Steps:
+  1. Client checks local DNS cache.
+  2. If not found, queries a recursive resolver.
+  3. Resolver asks the root server → TLD server → Authoritative server.
+  4. IP address is returned to the client.
 
-- Filter traffic based on IPs, ports, or protocols.
-- Protect networks from unauthorized access or attacks.
+### 6. NAT (Network Address Translation)
+
+- Allows multiple devices on a private network to access the internet using one public IP.
+- Commonly used in routers.
+
+### 7. MAC Address
+
+- Hardware identifier for a network interface.
+- Used within local area networks (LANs).
+
+### 8. Firewalls
+
+- Control network access based on rules (e.g., block all traffic except on port 443).
+- Used to secure systems from unauthorized access.
+
+---
 
 ## Communication Models
 
-### 1. Client-Server Model
+### Client-Server Model
 
-- One device (client) makes requests to another (server), which processes and responds.
+- Client sends request → Server processes it → Server sends response.
+- Example: Web browser (client) requests a web page from a server.
 
-### 2. Peer-to-Peer Model
+### Peer-to-Peer Model
 
-- Devices act as both clients and servers to each other.
-
-## Why It Matters
-
-- Efficient and secure communication between services depends on networking principles.
-- Network limits often define system boundaries, latencies, and bottlenecks.
-
-## Summary
-
-Networking basics provide the backbone for all system interactions. A solid grasp of IPs, ports, and DNS is critical for designing and deploying scalable, connected applications.
+- Each device can act as both client and server.
+- Example: File sharing in torrents.
 
 ---
+
+## The Request-Response Lifecycle (Web Example)
+
+### 1. User Action
+
+- A user types `example.com` in the browser.
+
+### 2. DNS Resolution
+
+- Browser checks cache or asks a DNS server to resolve `example.com` to an IP (e.g., `93.184.216.34`).
+
+### 3. TCP Connection
+
+- A TCP connection is established between client and server (usually on port 80 or 443).
+
+### 4. HTTP Request Sent
+
+- The browser sends an HTTP GET request for a web page.
+
+### 5. Server Processing
+
+- Server receives the request, processes it, and prepares a response (e.g., HTML content).
+
+### 6. HTTP Response Sent
+
+- Server sends back the response via TCP to the client.
+
+### 7. Rendering the Page
+
+- Browser receives the HTML, renders the page, and may make additional requests for CSS, JS, images, etc.

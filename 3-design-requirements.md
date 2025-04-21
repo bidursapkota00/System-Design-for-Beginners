@@ -1,54 +1,76 @@
-# Design Requirements
+# 03 - Design Requirements
 
-## Overview
+## 1. Core System Actions
 
-Before designing a system, it's essential to understand what the system is supposed to do. This lesson focuses on identifying and categorizing different types of requirements that guide architecture and design decisions.
+### Move Data
 
-## Key Types of Requirements
+- Transferring data between systems, services, or users.
+- Examples: sending data from client to server, syncing between services, or replicating between data centers.
 
-### 1. Functional Requirements
+### Store Data
 
-- Define **what** the system should do.
-- Examples:
-  - Allow users to register and log in.
-  - Process user payments.
-  - Display real-time data on a dashboard.
+- Persisting data for future use.
+- Involves choosing between SQL, NoSQL, file systems, or object storage.
+- Considerations: durability, scalability, read/write speed, cost.
 
-### 2. Non-Functional Requirements (NFRs)
+### Transform Data
 
-- Define **how well** the system performs its functions.
-- Common categories:
-  - **Scalability**: Can the system handle growing loads?
-  - **Reliability**: Is it fault-tolerant and always available?
-  - **Performance**: Latency, response time, throughput.
-  - **Security**: Data protection, authentication, authorization.
-  - **Maintainability**: Ease of updating and debugging.
-  - **Compliance**: Meets legal or organizational policies.
-
-### 3. System Constraints
-
-- Limitations imposed on design and implementation.
-- Examples:
-  - Budget and hardware limits.
-  - Programming language or tech stack.
-  - Regulatory constraints (e.g., GDPR).
-
-### 4. Estimating Scale
-
-Understanding system scale is critical:
-
-- Number of users (concurrent and daily active users).
-- Read/write operations per second.
-- Data storage needs (in MBs, GBs, or TBs).
-- Expected growth over time.
-
-## Why It Matters
-
-- Poor understanding of requirements can lead to over-engineering or under-engineering.
-- Clear requirements ensure the system meets user needs and performs under real-world conditions.
-
-## Summary
-
-Design requirements form the blueprint of the entire system. Every design decision should trace back to a requirement.
+- Processing data for various purposes like analytics, formatting, validation, or machine learning.
+- Examples: ETL (Extract, Transform, Load) pipelines, data cleaning, real-time processing.
 
 ---
+
+## 2. Non-Functional Requirements
+
+### Availability
+
+- The percentage of time the system is operational.
+- Measured as uptime (e.g., 99.9%).
+- High availability systems minimize downtime using failovers and redundancy.
+
+### Reliability
+
+- The system performs as expected under specific conditions.
+- Often involves retry mechanisms, error handling, and graceful degradation.
+
+### Fault Tolerance
+
+- Ability to continue functioning despite component failures.
+- Achieved through redundancy, backups, and fallback strategies.
+
+### Redundancy
+
+- Duplication of critical components (data, servers, etc.) to ensure continued operation if one fails.
+- Common in high-availability systems and disaster recovery planning.
+
+---
+
+## 3. Performance Metrics
+
+### Throughput
+
+- Amount of work the system can handle over time (e.g., requests/sec).
+- Higher throughput = more efficient system.
+- Influenced by concurrency, resource allocation, and load balancing.
+
+### Latency
+
+- Time taken to respond to a request.
+- Measured in milliseconds.
+- Lower latency = faster user experience.
+- Influenced by network delays, processing speed, and system load.
+
+---
+
+## 4. Security and Scalability
+
+### DDoS (Distributed Denial of Service)
+
+- Attack where many systems overwhelm a target with traffic.
+- Defenses: rate limiting, firewalls, Web Application Firewalls (WAF), and CDNs.
+
+### CDN (Content Delivery Network)
+
+- Distributes content across geographically located servers.
+- Reduces latency by serving content closer to the user.
+- Also helps absorb traffic spikes (including DDoS attacks).
