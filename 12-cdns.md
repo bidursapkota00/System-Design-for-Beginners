@@ -1,4 +1,4 @@
-# Content Delivery Networks (CDNs) & Edge Computing (Lesson 11)
+# Content Delivery Networks (CDNs) & Edge Computing
 
 ## Introduction to CDNs
 
