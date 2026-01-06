@@ -1,8 +1,8 @@
 # System Design Course
 
-![Bidur Sapkota](https://www.bidursapkota.com.np/_next/image?url=%2Fimages%2Fprofile3.png&w=48&q=75 "Bidur Sapkota - Developer")&nbsp;[Bidur Sapkota](https://www.bidursapkota.com.np/)
+![Bidur Sapkota](https://www.bidursapkota.com.np/images/gravatar.webp "Bidur Sapkota - Developer")&nbsp;[Bidur Sapkota](https://www.bidursapkota.com.np/)
 
-![System Design Concepts for Beginners by Bidur Sapkota](/6-system-design-post.jpg "System Design Concepts for Beginners – Blog by Bidur Sapkota")
+![System Design Concepts for Beginners by Bidur Sapkota](/6-system-design-post-1200.webp "System Design Concepts for Beginners – Blog by Bidur Sapkota")
 
 ## Table of Contents
 
